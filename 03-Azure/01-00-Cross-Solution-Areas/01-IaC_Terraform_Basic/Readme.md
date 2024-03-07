@@ -1,76 +1,96 @@
-# **MicroHack - Terraform on Azure (Basics)**
-# **MicroHack Template**
+# **MicroHack - Terraform on Azure**
 
 - [**MicroHack introduction**](#MicroHack-introduction)
 - [**MicroHack context**](#microhack-context)
 - [**Objectives**](#objectives)
 - [**MicroHack Challenges**](#microhack-challenges)
 - [**Contributors**](#contributors)
+
 # MicroHack introduction
 
-This MicroHack scenario walks through the use of ... with a focus on the best practices and the design principles. Specifically, this builds up to include working with an existing infrastructure.
+This MicroHack scenario provides a comprehensive guide on using Terraform on Azure, emphasizing best practices and design principles. This workshop will guide you through best practices, from initial resources and modules, to complex concepts and abstractions, to process aspects and the use of CI/CD with GitHub.
 
-![image](Path to the high level architecture )
+Before diving into the MicroHack, it is important to understand the concepts and objectives of Infrastructure as Code in particular Terraform. Go and checkout documentation and resources linked below:
 
-This lab is not a full explanation of .... as a technology, please consider the following articles required pre-reading to build foundational knowledge.
-
-Optional (read this after completing this lab to take your learning even deeper!)
-
-Describe the scenario here...
+- [Terraform on Azure](https://learn.microsoft.com/en-us/azure/developer/terraform/overview)
+- [What is Terraform](https://developer.hashicorp.com/terraform/intro)
 
 # MicroHack context
-This MicroHack scenario walks through the use of....
+
+tbd
 
 # Objectives
 
-After completing this MicroHack you will:
-
-- Know how to build a ...
-- Understand default ..
-- Understand how ..
+tbd
 
 # MicroHack challenges
 
 ## General prerequisites
 
-This MicroHack has a few but important prerequisites
+This MicroHack has a few but important prerequisites. In order to use the MicroHack time most effectively, the following tasks should be completed prior to starting the session.
 
-In order to use the MicroHack time most effectively, the following tasks should be completed prior to starting the session.
+Make sure your machine is equipped with the following tools:
 
-With these pre-requisites in place, we can focus on building the differentiated knowledge in ... that is required when working with the product, rather than spending hours repeating relatively simple tasks such as setting up....
+- [Terraform](https://developer.hashicorp.com/terraform/tutorials/azure-get-started/install-cli)
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+- [Visual Studio Code](https://code.visualstudio.com/download)
 
-In summary:
+An Azure Subscription is required to complete the MicroHack. If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/en-us/free/) before you begin.
 
-- Azure Subscription 
-- Resource Group 
-- Service 1
-- Service 2  
+Permissions for the deployment or a Service Principal are required and would be helpful to have prepared before the MicroHack. If you don't have the necessary permissions, please reach out to your Azure Administrator to get the following permissions:
 
-Permissions for the deployment: 
-- Contributor on your Resource Group
-- Other necessary permissions
+- Contributor on the subscription or resource group
 
-## Challenge 1 - Prerequisites and landing zone preparation 
+## Challenge 1 - Getting started with Terraform
 
-### Goal 
+### Goal
 
-The goal of this exercise is to deploy...
+In this exercise, you will create a Terraform configuration to deploy an Azure resource group. This resource group will serve as the base for the infrastructure you will construct in the following challenges.
 
 ### Actions
 
-* Write down the first 3 steps....
-* Set up and enable...
-* Perform and monitor....
+* Create a new file called `main.tf` in a new directory.
+* Add the following code to the `main.tf` file:
+    ```hcl 
+    # Configure the Azure provider
+    terraform {
+        required_providers {
+            azurerm = {
+                source  = "hashicorp/azurerm"
+                version = "~> 3.0.2"
+            }
+        }
+
+        required_version = ">= 1.1.0"
+    }
+
+    provider "azurerm" {
+        features {}
+    }
+
+    resource "azurerm_resource_group" "rg_iac" {
+        name     = "rg-iac-microhack"
+        location = "germanywestcentral"
+    }
+    ```
+* Review and discuss each block of the code with the group.
+  * Terraform Block - `terraform`
+  * Provider Block - `provider "azurerm"`
+  * Resource Block - `resource "azurerm_resource_group" "rg_iac"`
+* Initialize the Terraform configuration by running `terraform init` in the directory where the `main.tf` file is located.
+* Format and validate the Terraform configuration by running `terraform fmt` and `terraform validate`.
+* Deploy the Terraform configuration by running `terraform apply` and confirm the deployment by typing `yes` when prompted.
+* Inspection of the deployed resource group in the Azure Portal and the state file in the local directory.
 
 ### Success criteria
 
-* You have deployed ....
-* You successfully enabled ...
-* You have successfully setup ....
-* You have successfully ....
+* You have deployed a resource group using Terraform.
+* You have successfully initialized, formatted, and validated the Terraform configuration.
+* Understanding of the Terraform configuration and the deployed resource group.
 
 ### Learning resources
-* Link to https://learn.microsoft.com/en-us/azure/....
+* [Create an Azure resource goup](https://learn.microsoft.com/en-us/azure/developer/terraform/create-resource-group?tabs=azure-cli)
+* [Terraform - Get Started on Azure](https://developer.hashicorp.com/terraform/tutorials/azure-get-started)
 
 ### Solution - Spoilerwarning
 
