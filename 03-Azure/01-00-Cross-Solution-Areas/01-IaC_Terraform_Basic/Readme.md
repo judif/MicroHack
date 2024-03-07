@@ -131,4 +131,6 @@ Thank you for investing the time and see you next time!
 
 
 ## Contributors
-* Nils Bankert [GitHub](https://github.com/nilsbankert); [LinkedIn](https://www.linkedin.com/in/nilsbankert/)
+* Judith Freiberger - [GitHub](https://github.com/judif) & [LinkedIn](https://www.linkedin.com/in/judithfreiberger/)
+* Nils Pinnau - [GitHub](https://github.com/nilspinnau) & [LinkedIn](https://www.linkedin.com/in/nils-pinnau-6a5ba3222/)
+* Luise Paglionico - [GitHub](https://github.com/LuiseMaria) & [LinkedIn](https://www.linkedin.com/in/luise-paglionico/)
